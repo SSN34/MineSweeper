@@ -6,8 +6,9 @@ const gameWidth = width * cols;
 var bombCount = 10;
 
 let canvas = document.getElementById("game-canvas");
-canvas.setAttribute("width", width * cols);
-canvas.setAttribute("height", width * rows);
+
+canvas.width = gameWidth;
+canvas.height = gameHeight;
 
 const ctx = canvas.getContext('2d');
 
@@ -94,8 +95,8 @@ function messageBox(fillText, fillStyle, secondaryText = "", secondaryTextFillSt
 }
 
 function getCell(X, Y) {
-    var lowerX = Math.floor(X / width);
-    var lowerY = Math.floor(Y / width);
+    var lowerX = Math.floor((X - 60) / width);
+    var lowerY = Math.floor((Y - 80) / width);
 
     return Grid[lowerY][lowerX];
 }
